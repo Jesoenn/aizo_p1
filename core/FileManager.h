@@ -22,7 +22,7 @@ public:
     [[nodiscard]] int getArrayLength() const;
     template<typename T> T* readFile();
     template<typename T> void writeFile(T* array, int arraySize); //For file test mode
-    void saveData(AlgorithmType algorithm, SortingType sorting, const std::string& variable, int elements, float avgTime, int minTime, int maxTime) const;
+    void saveData(AlgorithmType algorithm, SortingType sorting, const std::string& variable, int elements, int time) const;
 
     static std::string toString(AlgorithmType algorithm);
     static std::string toString(SortingType sorting);

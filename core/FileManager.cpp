@@ -27,8 +27,7 @@ int FileManager::getArrayLength() const {
     return std::stoi(input);
 }
 
-void FileManager::saveData(const AlgorithmType algorithm, const SortingType sorting, const std::string& variable, const int elements,
-    const float avgTime, const int minTime, const int maxTime) const {
+void FileManager::saveData(const AlgorithmType algorithm, const SortingType sorting, const std::string& variable, const int elements, const int time) const {
     std::ofstream file(dataFileName, std::ios::app);
 
     if (!file.is_open()) {
@@ -40,9 +39,7 @@ void FileManager::saveData(const AlgorithmType algorithm, const SortingType sort
     << toString(sorting) << "\t"
     << variable << "\t"
     << elements << "\t"
-    << avgTime << "\t"
-    << minTime << "\t"
-    << maxTime << std::endl;
+    << time << std::endl;
 
     file.close();
 }
