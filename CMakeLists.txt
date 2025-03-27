@@ -13,4 +13,12 @@ add_executable(projekt1_aizo main.cpp
         enums/SortingType.h
         enums/AlgorithmType.h
         algorithms/QuickSort.cpp
-        algorithms/QuickSort.h)
+        algorithms/QuickSort.h
+        enums/PivotType.h
+        algorithms/InsertionSort.cpp
+        algorithms/InsertionSort.h
+        algorithms/HeapSort.cpp
+        algorithms/HeapSort.h
+        algorithms/DrunkStudentSort.cpp
+        algorithms/DrunkStudentSort.h
+)

@@ -11,6 +11,7 @@ class QuickSort {
 public:
     explicit QuickSort(PivotType pivotT);
     template <typename T> void sort(T* array, int left, int right); //left/right are indexes
+    template <typename T> static bool verify(T* array, int size);
 private:
     PivotType pivotType;
 
@@ -57,11 +58,13 @@ void QuickSort::quickSort(T* array, const int left, const int right) {
     }
 }
 
-
-
-
-
-
-
+template <typename T>
+bool QuickSort::verify(T* array, const int size) {
+    for (int i = 1; i < size; i++) {
+        if (array[i] < array[i - 1])
+            return false;
+    }
+    return true;
+}
 
 #endif //QUICKSORT_H
