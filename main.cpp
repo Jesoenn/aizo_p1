@@ -16,13 +16,20 @@ double calcIntoxication(const double value, const double places) {
     return value/pow(10.0,places);
 }
 
-void callFileTest(int algorithm, int type, const std::string& inputFile, const std::string& outputFile, int algorithmType, double intoxication) {
-    switch (algorithm) {
-        case 1: ;
-        case 2: ;
-        case 3: ;
-        case 4: ;
-        default: ;
+void callFileTest(const int algorithm, int type, const std::string& inputFile, const std::string& outputFile, int algorithmType, double intoxication) {
+    FileManager fileManager(inputFile,outputFile,"");
+    if ( algorithm == 0) {
+        switch (type) {
+            case 0:
+                int* array=fileManager.readFile<int>();
+                const int arraySize=fileManager.getArrayLength();
+                InsertionSort<int> insertionSort(array, arraySize);
+                insertionSort.sort();
+                fileManager.writeFile<int>(array, arraySize);
+                std::cout<<"Czy wynik poprawny?"<<insertionSort.verify()<<std::endl;
+                delete[] array;
+                break;
+        }
     }
 }
 
@@ -46,28 +53,28 @@ int main(const int argc, char* argv[]) {
             const int algorithm = std::stoi(argv[2]);
             const int type = std::stoi(argv[3]);
             const std::string inputFile = argv[4];
-
             //Optional arguments
             std::string outputFile;
             int algorithmType = -1;
             double intoxication = -1;
             if (argc == 7) {
-                outputFile = argv[6];
-                algorithmType = std::stoi(argv[7]);
-                if (algorithmType == 4) {
-                    intoxication = calcIntoxication(algorithmType,std::string(argv[7]).size());
-                }
-            } else if (algorithm>=2) {
+                outputFile = argv[5];
                 algorithmType = std::stoi(argv[6]);
                 if (algorithmType == 4) {
-                    intoxication = calcIntoxication(algorithmType,std::string(argv[7]).size());
+                    intoxication = calcIntoxication(algorithmType,std::string(argv[6]).size());
                 }
-            } else {
-                outputFile = argv[6];
+            } else if (algorithm>=2) {
+                algorithmType = std::stoi(argv[5]);
+                if (algorithmType == 4) {
+                    intoxication = calcIntoxication(algorithmType,std::string(argv[5]).size());
+                }
+            } else if (argc == 6) {
+                outputFile = argv[5];
             }
             callFileTest(algorithm, type, inputFile, outputFile, algorithmType, intoxication);
             return 0;
         } else if (mode == "--test") {
+            //DODAC WYBOR CZY LOSOWO, ROSNACO, ITD WARTOSCI
             std::cout<<"\nBENCHMARK MODE:"<<std::endl;
             std::cout<<"\tUsage:"<<std::endl<<"\t  projekt1_aizo.exe ---test <algorithm> [alg type] <type> <size> <outputFile>"<<std::endl;
             std::cout<<"\n\t<algorithm>\tSorting algorithm to use (0 - Insertion, 1 - Heap, 2 - Shell, 3 - Quick, 4 - Drunk Student)."<<std::endl;

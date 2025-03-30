@@ -9,7 +9,7 @@
 template <typename T>
 class InsertionSort {
 public:
-    InsertionSort(T* arr[], int size);
+    InsertionSort(T* arr, int size);
     void sort();
     bool verify();
 private:
@@ -18,7 +18,7 @@ private:
 };
 
 template <typename T>
-InsertionSort<T>::InsertionSort(T* arr[], int size) {
+InsertionSort<T>::InsertionSort(T* arr, int size) {
     this->array = arr;
     this->arrSize = size;
 }
