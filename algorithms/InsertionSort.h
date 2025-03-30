@@ -32,7 +32,7 @@ void InsertionSort<T>::sort(){
             array[j+1]=array[j];
             j--;
         }
-        array[j+1]=key; //j+1 because j i decreased (place key in "empty" spot)
+        array[j+1]=key; //j+1 because j is decreased (place key in "empty" spot)
     }
 }
 
