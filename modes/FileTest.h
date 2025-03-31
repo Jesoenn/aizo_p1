@@ -61,12 +61,18 @@ void FileTest::performSort(){
                 case 1: sequence=ShellSequence::KNUTH; break;
                 default: std::cout<<"\nWrong algorithm type!"<<std::endl; break;
             }
-            timer.start();
             ShellSort<T> shellSort(array,arraySize,sequence);
+            timer.start();
+            shellSort.sort();
             timer.stop();
-            //WYSWIETLIC KNUTH LUB NORMAL
             std::cout<<"Shell\t\t"<<arraySize<<"\t"<<typeid(T).name()<<"\t"<<timer.result()
-                     <<"\t\t"<<"\t\t"<<shellSort.verify()<<std::endl;
+                     <<"\t\t";
+            if(sequence==ShellSequence::NORMAL) {
+                std::cout<<"NORMAL";
+            } else {
+                std::cout<<"KNUTH";
+            }
+            std::cout<<"\t\t"<<shellSort.verify()<<std::endl;
             break;
         }
         case 3: {
@@ -79,14 +85,30 @@ void FileTest::performSort(){
                 default: std::cout<<"\nWrong algorithm type!"<<std::endl; break;
             }
             QuickSort quickSort(pivotType);
+            timer.start();
             quickSort.sort<T>(array,0,arraySize-1);
-            std::cout<<"Czy wynik poprawny? "<<quickSort.verify(array,arraySize)<<std::endl;
+            timer.stop();
+            std::cout<<"Quick\t\t"<<arraySize<<"\t"<<typeid(T).name()<<"\t"<<timer.result()
+                     <<"\t\t";
+            if(pivotType==PivotType::LEFT) {
+                std::cout<<"LEFT";
+            } else if (pivotType==PivotType::RIGHT){
+                std::cout<<"RIGHT";
+            } else if (pivotType==PivotType::MIDDLE){
+                std::cout<<"MIDDLE";
+            } else {
+                std::cout << "RANDOM";
+            }
+            std::cout<<"\t\t"<<quickSort.verify(array,arraySize)<<std::endl;
             break;
         }
         case 4: {
             DrunkStudentSort<T> drunkStudentSort(array,arraySize,intoxication);
+            timer.start();
             drunkStudentSort.sort();
-            std::cout<<"Czy wynik poprawny? "<<drunkStudentSort.verify()<<std::endl;
+            timer.stop();
+            std::cout<<"Student\t\t"<<arraySize<<"\t"<<typeid(T).name()<<"\t"<<timer.result()
+                     <<"\t\t"<<intoxication<<"\t\t"<<drunkStudentSort.verify()<<std::endl;
             break;
         }
         default: std::cout<<"\nWrong algorithm!"<<std::endl; break;

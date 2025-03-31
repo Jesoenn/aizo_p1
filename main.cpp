@@ -24,19 +24,17 @@ int main(const int argc, char* argv[]) {
 
     if (argc >1) {
         if (const std::string mode=argv[1]; mode == "--file") {
-            std::cout<<"\nFILE TEST MODE:"<<std::endl;
-            std::cout<<"\tUsage:"<<std::endl<<"\t  projekt1_aizo.exe --file <algorithm> <type> <inputFile> [outputFile] <alg type>"<<std::endl;
-            std::cout<<"\n\t<algorithm>\tSorting algorithm to use (0 - Insertion, 1 - Heap, 2 - Shell, 3 - Quick, 4 - Drunk Student)."<<std::endl;
-            std::cout<<"\t<type>\t\tData type to load (0 - int, 1 - float, 2 - double)."<<std::endl;
-            std::cout<<"\t<inputFile>\tInput file containing the data to be sorted."<<std::endl;
-            std::cout<<"\t[outputFile]\tIf provided, the sorted values will be saved to this file."<<std::endl;
-            std::cout<<"\t<alg type>\tRequired algorithm specifics for:\n\t\t\t\tQuick Sort (PIVOT): 0 - Left, 1 - Right, 2 - Middle, 3 - Random"
-                       "\n\t\t\t\tShell Sort (GAP): 0 - (n/2, n/8, ...), 1 - Knuth (1, 4 , 13, 40, ..., (3^k-1)/2)"
-                       "\n\t\t\t\tDrunk Student (INTOXICATION): T<0.value> (0 -> 1)"<<std::endl;
-
-            if (argc<5) {
-                std::cout<<"\nWrong number of arguments."<<std::endl;
-                return -2;
+            if(argc<5){
+                std::cout<<"\nFILE TEST MODE:"<<std::endl;
+                std::cout<<"\tUsage:"<<std::endl<<"\t  projekt1_aizo.exe --file <algorithm> <type> <inputFile> [outputFile] <alg type>"<<std::endl;
+                std::cout<<"\n\t<algorithm>\tSorting algorithm to use (0 - Insertion, 1 - Heap, 2 - Shell, 3 - Quick, 4 - Drunk Student)."<<std::endl;
+                std::cout<<"\t<type>\t\tData type to load (0 - int, 1 - float, 2 - double)."<<std::endl;
+                std::cout<<"\t<inputFile>\tInput file containing the data to be sorted."<<std::endl;
+                std::cout<<"\t[outputFile]\tIf provided, the sorted values will be saved to this file."<<std::endl;
+                std::cout<<"\t<alg type>\tRequired algorithm specifics for:\n\t\t\t\tQuick Sort (PIVOT): 0 - Left, 1 - Right, 2 - Middle, 3 - Random"
+                           "\n\t\t\t\tShell Sort (GAP): 0 - (n/2, n/8, ...), 1 - Knuth (1, 4 , 13, 40, ..., (3^k-1)/2)"
+                           "\n\t\t\t\tDrunk Student (INTOXICATION): T<0.value> (0 -> 1)"<<std::endl;
+                return 0;
             }
             const int algorithm = std::stoi(argv[2]);
             const int type = std::stoi(argv[3]);
@@ -48,18 +46,17 @@ int main(const int argc, char* argv[]) {
             if (argc == 7) {
                 outputFile = argv[5];
                 algorithmType = std::stoi(argv[6]);
-                if (algorithmType == 4) {
+                if (algorithm == 4) {
                     intoxication = calcIntoxication(algorithmType,std::string(argv[6]).size());
                 }
             } else if (algorithm>=2) {
                 algorithmType = std::stoi(argv[5]);
-                if (algorithmType == 4) {
+                if (algorithm == 4) {
                     intoxication = calcIntoxication(algorithmType,std::string(argv[5]).size());
                 }
             } else if (argc == 6) {
                 outputFile = argv[5];
             }
-
             FileTest fileTest(algorithm, type, inputFile, outputFile, algorithmType, intoxication);
             fileTest.start();
 
