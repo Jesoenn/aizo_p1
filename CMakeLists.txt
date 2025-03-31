@@ -1,11 +1,12 @@
-cmake_minimum_required(VERSION 3.30)
-project(projekt1_aizo)
+cmake_minimum_required(VERSION 3.26)
+project(aizo_projekt1)
 
-set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 set(CMAKE_CXX_FLAGS "-static")
 
-add_executable(projekt1_aizo main.cpp
+
+add_executable(aizo_projekt1 main.cpp
         core/FileManager.cpp
         core/FileManager.h
         core/Timer.cpp
@@ -26,4 +27,6 @@ add_executable(projekt1_aizo main.cpp
         algorithms/ShellSort.cpp
         algorithms/ShellSort.h
         enums/ShellSequence.h
+        modes/FileTest.cpp
+        modes/FileTest.h
 )

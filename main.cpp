@@ -9,6 +9,7 @@
 #include "core/FileManager.h"
 #include "core/Randomizer.h"
 #include "core/Timer.h"
+#include "modes/FileTest.h"
 #include <cmath>
 
 
@@ -16,24 +17,11 @@ double calcIntoxication(const double value, const double places) {
     return value/pow(10.0,places);
 }
 
-void callFileTest(const int algorithm, int type, const std::string& inputFile, const std::string& outputFile, int algorithmType, double intoxication) {
-    FileManager fileManager(inputFile,outputFile,"");
-    if ( algorithm == 0) {
-        switch (type) {
-            case 0:
-                int* array=fileManager.readFile<int>();
-                const int arraySize=fileManager.getArrayLength();
-                InsertionSort<int> insertionSort(array, arraySize);
-                insertionSort.sort();
-                fileManager.writeFile<int>(array, arraySize);
-                std::cout<<"Czy wynik poprawny?"<<insertionSort.verify()<<std::endl;
-                delete[] array;
-                break;
-        }
-    }
-}
-
 int main(const int argc, char* argv[]) {
+    // OPIS WYSWIETLA SIE TYLKO PRZY HELP!!!!
+    // W FILE TEST DODAC WYSWIETLANIE SPECYFIKACJI PODCZAS ROBIENIA PROGRAMU
+
+
     if (argc >1) {
         if (const std::string mode=argv[1]; mode == "--file") {
             std::cout<<"\nFILE TEST MODE:"<<std::endl;
@@ -71,7 +59,10 @@ int main(const int argc, char* argv[]) {
             } else if (argc == 6) {
                 outputFile = argv[5];
             }
-            callFileTest(algorithm, type, inputFile, outputFile, algorithmType, intoxication);
+
+            FileTest fileTest(algorithm, type, inputFile, outputFile, algorithmType, intoxication);
+            fileTest.start();
+
             return 0;
         } else if (mode == "--test") {
             //DODAC WYBOR CZY LOSOWO, ROSNACO, ITD WARTOSCI
