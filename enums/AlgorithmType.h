@@ -6,7 +6,11 @@
 #define ALGORITHMTYPE_H
 
 enum class AlgorithmType {
+    INSERTIONSORT,
     QUICKSORT,
+    HEAPSORT,
+    SHELLSORT,
+    DRUNKSTUDENTSORT
 };
 
 #endif //ALGORITHMTYPE_H

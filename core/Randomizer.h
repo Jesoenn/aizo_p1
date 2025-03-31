@@ -5,6 +5,7 @@
 #ifndef RANDOMIZER_H
 #define RANDOMIZER_H
 #include <algorithm>
+#include <iostream>
 #include <random>
 
 #include "../enums/SortingType.h"
@@ -25,7 +26,9 @@ void Randomizer::fillArray(T *array, const int arraySize, T min, T max, const So
             array[i] = dis(gen);
         }
     } else{
-        std::uniform_real_distribution<T> dis(min, max);
+        //min=min*0.5; //P(x|a,b) = 1/(b-a)
+        //max=max*0.5;
+        std::uniform_real_distribution<long double> dis(min, max);
         for (int i = 0; i < arraySize; i++) {
             array[i] = dis(gen);
         }

@@ -4,12 +4,11 @@
 
 #include "FileTest.h"
 #include "../core/FileManager.h"
-#include "../algorithms/InsertionSort.h"
 
 #include <utility>
 
-FileTest::FileTest(int algorithm, int type, std::string inputFile, std::string outputFile, int algorithmType,
-                   double intoxication) {
+FileTest::FileTest(const int algorithm, const int type, std::string inputFile, std::string outputFile, const int algorithmType,
+                   const double intoxication) {
     this->algorithm=algorithm;
     this->type=type;
     this->inputFile=std::move(inputFile);

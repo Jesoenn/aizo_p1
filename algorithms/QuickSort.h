@@ -30,17 +30,17 @@ void QuickSort::sort(T* array, const int left, const int right) {
 
 template<typename T>
 int QuickSort::partition(T* array, const int left, int right, int pivot) {
-    int j = left; //swap index
-    std::swap(array[pivot], array[right]); //move pivot to right
+    int j = left;                                       //index where elements smaller or equal pivot are placed
+    std::swap(array[pivot], array[right]);    //move pivot to right
     pivot = right;
 
-    for (int i = left; i < right; i++) {
+    for (int i = left; i < right; i++) {                //for each element from min index to max index
         if (array[i] <= array[pivot]) {
-            std::swap(array[i], array[j]);
-            j++;
+            std::swap(array[i], array[j]);    //place arr[i] on j place (swap)
+            j++;                                        //move swap index to next place
         }
     }
-    std::swap(array[j], array[pivot]); //move pivot
+    std::swap(array[j], array[pivot]);        //move pivot to swap index
     return j;
 }
 

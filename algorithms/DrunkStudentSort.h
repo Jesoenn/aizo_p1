@@ -47,11 +47,11 @@ void DrunkStudentSort<T>::insertionSort(){
         }
         T key = array[i];
         int j = i-1;
-        while(j>=0 && array[j]>key){ //move elements bigger than key to the right
+        while(j>=0 && array[j]>key){    //move elements bigger than key to the right of array
             array[j+1]=array[j];
-            j--;
+            j--;                        //loop from index lower than key to 0
         }
-        array[j+1]=key; //j+1 because j is decreased
+        array[j+1]=key;                 //j+1 because j is decreased (place key in "empty" spot)
     }
 }
 

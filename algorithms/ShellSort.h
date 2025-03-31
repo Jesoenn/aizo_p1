@@ -42,11 +42,7 @@ void ShellSort<T>::sort() {
                 array[j+gap]=key;                   //j+gap because j is decreased (place key in "empty" spot)
             }
         }
-        declineGap();
-
-        // for (int i = 0; i < arraySize; i++) {
-        //     std::cout << array[i] << " ";
-        // } std::cout << std::endl;
+        declineGap();                               //after using gap for each element in array, lower the gap
     }
 }
 

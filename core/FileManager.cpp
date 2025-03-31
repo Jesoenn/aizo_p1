@@ -47,6 +47,10 @@ void FileManager::saveData(const AlgorithmType algorithm, const SortingType sort
 std::string FileManager::toString(const AlgorithmType algorithm) {
     switch (algorithm) {
         case AlgorithmType::QUICKSORT: return "QUICKSORT";
+        case AlgorithmType::HEAPSORT: return "HEAPSORT";
+        case AlgorithmType::SHELLSORT: return "SHELLSORT";
+        case AlgorithmType::INSERTIONSORT: return "INSERTIONSORT";
+        case AlgorithmType::DRUNKSTUDENTSORT: return "DRUNKSTUDENTSORT";
         default: return "ERROR";
     }
 }

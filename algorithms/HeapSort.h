@@ -32,9 +32,9 @@ template <typename T>
 void HeapSort<T>::sort() {
     buildHeap();
     for (int i = size-1; i >= 1; i--) {
-        std::swap(array[0], array[i]); //put largest element last in heap
-        heapSize--;
-        heapify(0);
+        std::swap(array[0], array[i]);  //put largest element last in heap
+        heapSize--;                               //decrement heap size
+        heapify(0);                             //heapify from 0, because it was max element changed
     }
 }
 

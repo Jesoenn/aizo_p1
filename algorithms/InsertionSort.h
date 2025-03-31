@@ -28,11 +28,11 @@ void InsertionSort<T>::sort(){
     for(int i=1; i<arrSize; i++) {
         T key = array[i];
         int j = i-1;
-        while(j>=0 && array[j]>key){ //move elements bigger than key to the right
+        while(j>=0 && array[j]>key){    //move elements bigger than key to the right of array
             array[j+1]=array[j];
-            j--;
+            j--;                        //loop from index lower than key to 0
         }
-        array[j+1]=key; //j+1 because j is decreased (place key in "empty" spot)
+        array[j+1]=key;                 //j+1 because j is decreased (place key in "empty" spot)
     }
 }
 
