@@ -44,4 +44,5 @@ bool InsertionSort<T>::verify() {
     }
     return true;
 }
+
 #endif //INSERTIONSORT_H

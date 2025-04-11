@@ -21,8 +21,6 @@ private:
     [[nodiscard]] int pickPivot(int left, int right) const;
 };
 
-
-
 template<typename T>
 void QuickSort::sort(T* array, const int left, const int right) {
     quickSort<T>(array, left, right);

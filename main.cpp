@@ -106,3 +106,8 @@ int main(const int argc, char* argv[]) {
     }
 }
 
+//TODO -  przerzucic templaty do osobnych plikow .cpp
+//TODO - Dopisać do ostatecznego pliku funkcji test koncowa zmienna
+//TODO - Zapewnic wywalanie errorów
+//TODO - przeprowadzic male testy na plikach czy kazde sortowanie na 100% dziala
+
