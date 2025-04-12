@@ -13,7 +13,7 @@ class Timer {
     void reset();
     void start();
     int stop();
-    int result();
+    [[nodiscard]] int result() const;
 
     private:
     std::chrono::high_resolution_clock::time_point startTime,endTime;

@@ -7,6 +7,7 @@
 #include "core/Timer.h"
 #include "modes/FileTest.h"
 #include <cmath>
+#include <random>
 
 #include "modes/Benchmark.h"
 
@@ -16,6 +17,7 @@ double calcIntoxication(const double value, const double places) {
 }
 
 int main(const int argc, char* argv[]) {
+
     if (argc >1) {
         if (const std::string mode=argv[1]; mode == "--file") {
             if(argc<5){

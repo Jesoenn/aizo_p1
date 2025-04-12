@@ -10,7 +10,7 @@ enum class SortingType {
     ASCENDING,
     DESCENDING,
     PARTIALLY_33,
-    PARTIALLY_66
+    PARTIALLY_66,
 };
 
 #endif //SORTINGTYPE_H

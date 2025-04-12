@@ -6,6 +6,8 @@
 
 #include <iomanip>
 #include <utility>
+#include <iostream>
+#include <fstream>
 
 FileManager::FileManager(std::string fileName)
     : inputFileName("NONE"), outputFileName("NONE"), dataFileName(std::move(fileName)) {}
@@ -27,15 +29,17 @@ int FileManager::getArrayLength() const {
     return std::stoi(input);
 }
 
-void FileManager::saveData(const AlgorithmType algorithm, const SortingType sorting, const std::string& variable, const int elements, const int time) const {
+void FileManager::saveData(const AlgorithmType algorithm, const SortingType sorting, const std::string& variable, const int elements,
+    const int time, const std::string& algorithmSettings) const {
     std::ofstream file(dataFileName, std::ios::app);
 
     if (!file.is_open()) {
         std::cout << "Cannot open/create data file." << std::endl;
         return;
     }
-    //Algorytm | Poczatkowe sortowanie | Typ zmiennej | Liczba elementow | Średni czas ms | Max czas | Min czas
+    //Algorytm | Rodzaj algorytmu | Poczatkowe sortowanie | Typ zmiennej | Liczba elementow | Średni czas ms | Max czas | Min czas
     file << toString(algorithm) << "\t"
+    << algorithmSettings << "\t"
     << toString(sorting) << "\t"
     << variable << "\t"
     << elements << "\t"
@@ -65,3 +69,49 @@ std::string FileManager::toString(const SortingType sorting) {
         default: return "ERROR";
     }
 }
+
+template<typename T> void FileManager::writeFile(T* array, const int arraySize) {
+    std::ofstream file(outputFileName);
+    file<<arraySize<<std::endl;
+    for (int i=0; i<arraySize; i++) {
+        file<<array[i]<<std::endl;
+    }
+    file.close();
+}
+
+template<typename T> T* FileManager::readFile() {
+    std::string input;
+    std::ifstream file(inputFileName);
+
+    if (!file.is_open()) {
+        std::cout << "Cannot open file. Array is empty" << std::endl;
+        return nullptr;
+    }
+
+    std::getline(file, input);
+    const int arrSize=std::stoi(input);
+
+    T* array=new T[arrSize];
+
+    for (int i=0;i<arrSize;i++) {
+        std::getline(file, input);
+
+        if constexpr(std::is_integral_v<T>) {
+            array[i]=static_cast<T>(std::stoi(input));
+        } else if constexpr (std::is_floating_point_v<T>){
+            array[i]=static_cast<T>(std::stod(input));
+        }
+    }
+    file.close();
+    return array;
+}
+
+
+
+template void FileManager::writeFile<int>(int*, int);
+template void FileManager::writeFile<float>(float*, int);
+template void FileManager::writeFile<double>(double*, int);
+
+template int* FileManager::readFile<int>();
+template float* FileManager::readFile<float>();
+template double* FileManager::readFile<double>();

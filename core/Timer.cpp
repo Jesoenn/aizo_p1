@@ -32,7 +32,7 @@ int Timer::stop() {
     return -1;
 }
 
-int Timer::result() {
+int Timer::result() const {
     return static_cast<int>(duration);
 }
 

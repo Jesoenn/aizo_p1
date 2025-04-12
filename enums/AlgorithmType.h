@@ -10,7 +10,8 @@ enum class AlgorithmType {
     QUICKSORT,
     HEAPSORT,
     SHELLSORT,
-    DRUNKSTUDENTSORT
+    DRUNKSTUDENTSORT,
+    NONE
 };
 
 #endif //ALGORITHMTYPE_H
