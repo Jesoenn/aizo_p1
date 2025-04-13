@@ -36,12 +36,26 @@ int QuickSort<T>::partition(const int left, int right, int pivot) {
 }
 
 template<typename T>
-void QuickSort<T>::quickSort(const int left, const int right) {
-    if (left < right) {
+void QuickSort<T>::quickSort(int left, int right) {
+    // if (left < right && left>=0) {
+    //     int pivot = pickPivot(left, right);
+    //     pivot = partition(left, right, pivot);
+    //     quickSort(left, pivot-1);
+    //     quickSort(pivot+1, right);
+    // }
+
+    //https://medium.com/@hamzamirza347/quick-sort-optimization-6784c43935bd
+    while (left < right && left>=0) {
         int pivot = pickPivot(left, right);
         pivot = partition(left, right, pivot);
-        quickSort(left, pivot-1);
-        quickSort(pivot+1, right);
+
+        if (pivot - left < right - pivot) {
+            quickSort(left, pivot - 1);
+            left = pivot + 1;
+        } else {
+            quickSort(pivot + 1, right);
+            right = pivot - 1;
+        }
     }
 }
 

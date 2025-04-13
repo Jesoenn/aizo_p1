@@ -84,9 +84,8 @@ void Benchmark::performSort() {
         max = std::numeric_limits<T>::max();
     }
     randomizer.fillArray(array,size,min,max,sortingType);   // Fill array
-    std::cout<<"Chosen sorting: "<<chosenSortingType<<std::endl<<std::endl;
-
-    std::cout<<"\n\nAlgorithm\tSize\tType\tTime [ms]\tAlg Type\tCorrect?"<<std::endl;
+    std::cout<<"\nChosen sorting: "<<chosenSortingType;
+    std::cout<<"\nAlgorithm\tSize\tType\tTime [ms]\tAlg Type\tCorrect?"<<std::endl;
     switch(algorithmTypeEnum) {
         case AlgorithmType::INSERTIONSORT: {
             InsertionSort<T> insertionSort(array, size);
@@ -146,8 +145,9 @@ void Benchmark::performSort() {
             std::cout<<"Student\t\t"<<size<<"\t"<<typeid(T).name()<<"\t"<<timer.result()
                      <<"\t\t"<<intoxication<<"\t\t"<<drunkStudentSort.verify()<<std::endl;
             chosenAlgorithmType=std::to_string(intoxication);
-            int dotIndex=chosenAlgorithmType.find('.');
-            chosenAlgorithmType=chosenAlgorithmType.substr(0,dotIndex+4);
+            const int dotIndex=static_cast<int>(chosenAlgorithmType.find('.'));
+            chosenAlgorithmType[dotIndex]=',';
+            chosenAlgorithmType=chosenAlgorithmType.substr(0,dotIndex+6);
 
             break;
         }

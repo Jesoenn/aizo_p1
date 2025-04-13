@@ -33,6 +33,12 @@ void FileManager::saveData(const AlgorithmType algorithm, const SortingType sort
     const int time, const std::string& algorithmSettings) const {
     std::ofstream file(dataFileName, std::ios::app);
 
+    // if (algorithm==AlgorithmType::DRUNKSTUDENTSORT) {
+    //     const int dotIndex = algorithmSettings.find('.');
+    //     algorithmSettings[dotIndex]=',';
+    // }
+
+
     if (!file.is_open()) {
         std::cout << "Cannot open/create data file." << std::endl;
         return;

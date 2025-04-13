@@ -1,14 +1,11 @@
 
 #include <iostream>
-
-#include "algorithms/DrunkStudentSort.h"
 #include "core/FileManager.h"
-#include "core/Randomizer.h"
 #include "core/Timer.h"
 #include "modes/FileTest.h"
 #include <cmath>
 #include <random>
-
+#include <ranges>
 #include "modes/Benchmark.h"
 
 
@@ -17,7 +14,6 @@ double calcIntoxication(const double value, const double places) {
 }
 
 int main(const int argc, char* argv[]) {
-
     if (argc >1) {
         if (const std::string mode=argv[1]; mode == "--file") {
             if(argc<5){
@@ -43,12 +39,12 @@ int main(const int argc, char* argv[]) {
                 outputFile = argv[5];
                 algorithmType = std::stoi(argv[6]);
                 if (algorithm == 4) {
-                    intoxication = calcIntoxication(algorithmType,std::string(argv[6]).size());
+                    intoxication = calcIntoxication(algorithmType,static_cast<double>(std::string(argv[6]).size()));
                 }
             } else if (algorithm>=2) {
                 algorithmType = std::stoi(argv[5]);
                 if (algorithm == 4) {
-                    intoxication = calcIntoxication(algorithmType,std::string(argv[5]).size());
+                    intoxication = calcIntoxication(algorithmType,static_cast<double>(std::string(argv[5]).size()));
                 }
             } else if (argc == 6) {
                 outputFile = argv[5];
@@ -58,7 +54,6 @@ int main(const int argc, char* argv[]) {
 
             return 0;
         } else if (mode == "--test") {
-            //DODAC WYBOR CZY LOSOWO, ROSNACO, ITD WARTOSCI
             if (argc < 7) {
                 std::cout<<"\nBENCHMARK MODE:"<<std::endl;
                 std::cout<<"\tUsage:"<<std::endl<<"\t  projekt1_aizo.exe ---test <algorithm> <type> <size> <sorting> <outputFile> <alg type>"<<std::endl;
@@ -84,7 +79,7 @@ int main(const int argc, char* argv[]) {
             if (argc == 8) {
                 algorithmType = std::stoi(argv[7]);
                 if (algorithm == 4) {
-                    intoxication = calcIntoxication(algorithmType,std::string(argv[7]).size());
+                    intoxication = calcIntoxication(algorithmType,static_cast<double>(std::string(argv[7]).size()));
                 }
             }
 
@@ -94,7 +89,9 @@ int main(const int argc, char* argv[]) {
             return 0;
         } else {
             std::cout<<std::endl<<"HELP MODE:"<<std::endl;
-            std::cout<<"\tUsage:"<<std::endl<<"\tprojekt1_aizo.exe --help"<<std::endl;
+            std::cout<<"\tUsage:"<<std::endl<<" \tprojekt1_aizo.exe --help\n"
+                                              " \tprojekt1_aizo.exe --file\n"
+                                              " \tprojekt1_aizo.exe --test"<<std::endl;
             std::cout<<std::endl<<"EXAMPLE CALLS:"<<std::endl;
             std::cout<<"\tSorting integers using Heap Sort from a file and saving results:"<<std::endl;
             std::cout<<"\tprojekt1_aizo.exe --file 1 0 input.txt sorted_output.txt"<<std::endl<<std::endl;
@@ -107,9 +104,4 @@ int main(const int argc, char* argv[]) {
         return -1;
     }
 }
-
-//TODO -  przerzucic templaty do osobnych plikow .cpp
-//TODO - Dopisać do ostatecznego pliku funkcji test koncowa zmienna
-//TODO - Zapewnic wywalanie errorów
-//TODO - przeprowadzic male testy na plikach czy kazde sortowanie na 100% dziala
 
