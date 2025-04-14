@@ -21,8 +21,7 @@ int FileManager::getArrayLength() const {
     std::ifstream file(inputFileName);
 
     if (!file.is_open()) {
-        std::cout << "Cannot open file. Array is empty" << std::endl;
-        return 0;
+        throw std::invalid_argument("Cannot open file");
     }
     std::getline(file, input);
     file.close();
