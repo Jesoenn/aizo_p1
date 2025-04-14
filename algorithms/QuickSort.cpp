@@ -4,11 +4,11 @@
 
 #include "QuickSort.h"
 #include <iostream>
-#include <random>
+
 
 
 template<typename T>
-QuickSort<T>::QuickSort(T *array, int size, PivotType pivotT) {
+QuickSort<T>::QuickSort(T *array, int size, PivotType pivotT) : gen(rd()){
     this->array = array;
     this->size = size;
     this->pivotType = pivotT;
@@ -69,14 +69,12 @@ bool QuickSort<T>::verify() {
 }
 
 template <typename T>
-int QuickSort<T>::pickPivot(const int left, const int right) const {
+int QuickSort<T>::pickPivot(const int left, const int right) {
     switch (pivotType) {
         case PivotType::LEFT: return left;
         case PivotType::RIGHT: return right;
         case PivotType::MIDDLE: return left + (right - left) / 2;;
         case PivotType::RANDOM: {
-            std::random_device rd;
-            std::mt19937 gen(rd());
             std::uniform_int_distribution<int> dist(left, right);
             return dist(gen);
         }

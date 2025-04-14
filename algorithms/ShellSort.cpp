@@ -46,8 +46,8 @@ ShellSort<T>::ShellSort(T* arr, int size, ShellSequence sequence) {
 
 template<typename T>
 int ShellSort<T>::calcStartingGap() const {
-    if (sequence==ShellSequence::NORMAL) {      // For normal sequence starting gap = n/4
-        return arraySize/4;
+    if (sequence==ShellSequence::NORMAL) {      // For normal sequence starting gap = n/2
+        return arraySize/2;
     }
     int tempGap=1;
     while (tempGap*3+1 < arraySize/2) {         // For Knuth sequence, starting gap = 1, 4, 13, 40, ...
