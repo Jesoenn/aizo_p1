@@ -7,22 +7,20 @@
 
 template<typename T>
 void ShellSort<T>::sort() {
-    while (gap > 0) {                               //while loop -> decreasing gaps until gap=1
-        std::cout<<"GAP: "<<gap<<std::endl;
+    while (gap > 0) {                               // while loop -> decreasing gaps until gap=1
+        std::cout << "GAP: " << gap << std::endl;
 
-        for (int s = 0; s < gap; s++) {             //s loop -> how many sub arrays to sort(gap numer)
-            for (int i=s+gap; i<arraySize; i++) {   //insertion sort -> start from 2nd element
-                T key = array[i];                   //element to "sort"
-                int j = i-gap;                      //prev element from key
+        for (int i = gap; i < arraySize; i++) {     // insertion sort -> start from second element (gap)
+            T key = array[i];                       // element to "sort"
+            int j = i - gap;                        // previous element from key
 
-                while(j>=0 && array[j]>key){        //move elements bigger than key to the right
-                    array[j+gap]=array[j];
-                    j-=gap;
-                }
-                array[j+gap]=key;                   //j+gap because j is decreased (place key in "empty" spot)
+            while (j >= 0 && array[j] > key) {      // move elements bigger than key to the right
+                array[j + gap] = array[j];
+                j -= gap;
             }
+            array[j + gap] = key;                   // j + gap because j is decreased (place key in "empty" spot)
         }
-        declineGap();                               //after using gap for each element in array, lower the gap
+        declineGap();                               // after using gap for each element in array, lower the gap
     }
 }
 
