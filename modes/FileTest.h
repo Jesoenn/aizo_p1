@@ -20,4 +20,5 @@ private:
     double intoxication;
 };
 
+#include "FileTest.tpp"
 #endif //AIZO_PROJEKT1_FILETEST_H

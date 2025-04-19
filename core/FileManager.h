@@ -26,4 +26,5 @@ private:
     const std::string inputFileName,outputFileName,dataFileName;
 };
 
+#include "FileManager.tpp"
 #endif //FILEMANAGER_H

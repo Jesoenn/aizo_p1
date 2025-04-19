@@ -11,24 +11,25 @@ add_executable(projekt1_aizo main.cpp
         core/FileManager.h
         core/Timer.cpp
         core/Timer.h
-        core/Randomizer.cpp
+        core/Randomizer.tpp
         core/Randomizer.h
         enums/SortingType.h
         enums/AlgorithmType.h
-        algorithms/QuickSort.cpp
+        algorithms/QuickSort.tpp
         algorithms/QuickSort.h
         enums/PivotType.h
-        algorithms/InsertionSort.cpp
+        algorithms/InsertionSort.tpp
         algorithms/InsertionSort.h
-        algorithms/HeapSort.cpp
+        algorithms/HeapSort.tpp
         algorithms/HeapSort.h
-        algorithms/DrunkStudentSort.cpp
+        algorithms/DrunkStudentSort.tpp
         algorithms/DrunkStudentSort.h
-        algorithms/ShellSort.cpp
+        algorithms/ShellSort.tpp
         algorithms/ShellSort.h
         enums/ShellSequence.h
         modes/FileTest.cpp
         modes/FileTest.h
         modes/Benchmark.cpp
         modes/Benchmark.h
+        core/FileManager.tpp
 )

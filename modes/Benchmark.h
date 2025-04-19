@@ -27,4 +27,5 @@ private:
     double intoxication;
 };
 
+#include "Benchmark.tpp"
 #endif //BENCHMARK_H
