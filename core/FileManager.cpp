@@ -7,8 +7,8 @@
 #include <iostream>
 #include <fstream>
 
-FileManager::FileManager(std::string fileName)
-    : inputFileName("NONE"), outputFileName("NONE"), dataFileName(std::move(fileName)) {}
+FileManager::FileManager(std::string fileName, std::string outputFileName)
+    : inputFileName("NONE"), outputFileName(std::move(outputFileName)), dataFileName(std::move(fileName)) {}
 
 FileManager::FileManager(std::string iFileName, std::string oFileName, std::string dataFileName)
     : inputFileName(std::move(iFileName)), outputFileName(std::move(oFileName)), dataFileName(std::move(dataFileName)) {}

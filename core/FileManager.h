@@ -13,7 +13,7 @@
 class FileManager {
 public:
     FileManager(std::string iFileName, std::string oFileName, std::string dataFileName);
-    explicit FileManager(std::string fileName);
+    FileManager(std::string fileName, std::string outputFileName);
     [[nodiscard]] int getArrayLength() const;
     template<typename T> T* readFile();
     template<typename T> void writeFile(T* array, int arraySize); //For file test mode

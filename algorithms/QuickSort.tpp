@@ -41,11 +41,11 @@ void QuickSort<T>::quickSort(int left, int right) {
     //     quickSort(pivot+1, right);
     // }
 
-    //https://medium.com/@hamzamirza347/quick-sort-optimization-6784c43935bd
     while (left < right && left>=0) {
         int pivot = pickPivot(left, right);
         pivot = partition(left, right, pivot);
 
+        // Sort shorter subarray first
         if (pivot - left < right - pivot) {
             quickSort(left, pivot - 1);
             left = pivot + 1;

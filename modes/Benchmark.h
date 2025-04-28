@@ -11,7 +11,7 @@
 
 class Benchmark {
 public:
-    Benchmark(int algorithm, int type, int size, int sorting, std::string outputFile,
+    Benchmark(int algorithm, int type, int size, int sorting, std::string outputFile, std::string numbersFile,
              int algorithmType, double intoxication);
     void start();
 private:
@@ -23,7 +23,7 @@ private:
     int algorithm,type,size,sorting,algorithmType;
     SortingType sortingType;
     AlgorithmType algorithmTypeEnum;
-    std::string outputFile,chosenSortingType,chosenAlgorithmType;
+    std::string outputFile,numbersFileName,chosenSortingType,chosenAlgorithmType;
     double intoxication;
 };
 

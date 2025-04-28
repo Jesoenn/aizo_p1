@@ -13,7 +13,7 @@ template<typename T>
 void Benchmark::performSort() {
     initSortingType();                          //get sorting as enum
     initAlgorithmTypeEnum();                    //get algorithm as enum
-    const FileManager fileManager(outputFile);     //saving sorting data to files
+    FileManager fileManager(outputFile, numbersFileName);     //saving sorting data to files
     Randomizer randomizer;                      // Data generator
     T* array = new T[size];
     Timer timer;
@@ -96,7 +96,9 @@ void Benchmark::performSort() {
         }
         default: throw std::runtime_error("Invalid algorithm");
     }
-
     fileManager.saveData(algorithmTypeEnum,sortingType,typeid(T).name(),size,timer.result(),chosenAlgorithmType);
+    if(numbersFileName != "-"){
+        fileManager.writeFile<T>(array, size);
+    }
     delete[] array;
 }

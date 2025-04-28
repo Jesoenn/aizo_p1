@@ -5,13 +5,14 @@
 #include "Benchmark.h"
 #include "../core/Timer.h"
 
-Benchmark::Benchmark(const int algorithm, const int type, const int size, const int sorting, std::string outputFile,
+Benchmark::Benchmark(const int algorithm, const int type, const int size, const int sorting, std::string outputFile, std::string numbersFile,
              const int algorithmType, const double intoxication): sortingType(SortingType::NONE), algorithmTypeEnum(AlgorithmType::NONE) {
     this->algorithm = algorithm;
     this->type = type;
     this->size = size;
     this->sorting = sorting;
     this->outputFile = std::move(outputFile);
+    this->numbersFileName = std::move(numbersFile);
     this->algorithmType = algorithmType;
     this->intoxication = intoxication;
     this->chosenSortingType = "NULL";
